@@ -7,16 +7,19 @@ let searchBar = document.getElementById("search")
 searchBar.addEventListener("keyup", function(event) {
   if (event.key === "Enter") {
     // Execute search function with search term
-    console.log("passed search query=", searchBar.value)
     doSearch();
   }
 });
 function doSearch() {
-  console.log("executing search!")
+  // fix empty string query
   let searchStr = searchBar.value;
+  if (searchStr == "") {
+    searchStr = "Shot"
+  }
+
+  // concatenate url
   let baseURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
   let newURL = baseURL.concat(searchStr)
-  console.log(newURL)
 
   // Fetch data from jsonplaceholder's "users" endpoint
   fetch(newURL)
@@ -26,22 +29,15 @@ function doSearch() {
     // Then do something with the JSON data
     .then((data) => {
       let drinks = data;
-      console.log(drinks)
 
       // Use .map to create an array of html templates to render to the DOM
       let drinkList = drinks.drinks.map(function(drink) {
-        console.log("test 1:", drink)
-        return html`<div @click=${()=>renderRecipe(drink)} class="user-entry">
+        return html`<div class="drink-entry">
         <h2>${drink.strDrink}</h2>
-      </div>`;
+        </div>`;
       });
 
       // Render the userList array to the user-list div
-      render(drinkList, document.getElementById("user-list"));
+      render(drinkList, document.getElementById("drink-list"));
     });
 }
-
-function renderRecipe(drink) {
-  console.log("test 2:", drink)
-  render(drink.strGlass, document.getElementById("recipe"));
-} 
