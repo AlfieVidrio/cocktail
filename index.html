@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cocktail Search</title>
     
-    <script type="module" crossorigin src="/cocktail/assets/index-ebba3ee9.js"></script>
-    <link rel="stylesheet" href="/cocktail/assets/index-725a11c3.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/cocktail/assets/index-197b7020.js"></script>
+    <link rel="stylesheet" href="/cocktail/assets/index-0aadc760.css">
   </head>
   <body>
-    <input id="text-input" type="text" />
-    <button id="search">Search</button>
-
-
-    <h1>Cocktail Results List</h1>
-    <div id="user-list"></div>
+    <div class="flex-container">
+      <div class="flex-item"><h1>Cocktail Search Engine</h1></div>
+      <div class="flex-item"><input id="search" type="text" placeholder="Shot"/>
+      <div class="flex-item"> <div id="drink-list"></div></div>
+    </div>
     
   </body>
 </html>
